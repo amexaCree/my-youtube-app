@@ -58,6 +58,7 @@ class VideoCell: UICollectionViewCell {
     let separatorView: UIView =  {
         let view = UIView()
         view.backgroundColor = UIColor.black
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
