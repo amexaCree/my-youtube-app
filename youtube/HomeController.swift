@@ -17,7 +17,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         view.backgroundColor = UIColor.red //changed for new swift
         collectionView?.backgroundColor = UIColor.white
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId") //changed for new swift
+        
+        collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellId") //changed for new swift
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,7 +28,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        cell.backgroundColor = UIColor.red
+//        cell.backgroundColor = UIColor.red
         
         return cell
     }
@@ -38,6 +39,54 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
 
 }
+
+class VideoCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    let thumbnailImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.blue
+        imageView.translatesAutoresizingMaskIntoConstraints = false // for setting constrains on a view in code this has to be set
+        return imageView
+    }()
+    
+
+    func setupViews() {
+        addSubview(thumbnailImageView)
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H: |-16-[V0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V: |-16-[V0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
+        
+//        thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
+        
+         backgroundColor = UIColor.blue
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
+//13)add new cell class VideoCell
+//instantiate thumbnailView
+//add thumbnailView as subview of cell
+//set thumbnail size
+//add constraints for thumbnailView padding (horizontal and veritcal)
+//remove thumnail size setting (no longer needed)
+
+//
+
+
+
+
+
 
 //2)add background color for main view
 //3)change view controller subclass to collectionviewcontroller
@@ -51,6 +100,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
 //10)add collectionView cellforItematIndexPath func
 //(still crashes, cell with identifier "cellId" not set)
+//11)add function to register cell identifier "cellId"
+
+//12)make blank "main interface" field in "deployment info", in general tab of project settings
+
+
 
 
 
