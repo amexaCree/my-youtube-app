@@ -55,18 +55,30 @@ class VideoCell: UICollectionViewCell {
     }()
     
 
+    let separatorView: UIView =  {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        return view
+    }()
+    
     func setupViews() {
         addSubview(thumbnailImageView)
+        addSubview(separatorView)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H: |-16-[V0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V: |-16-[V0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
         
-//        thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
         
-         backgroundColor = UIColor.blue
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+        
+        //        thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
+        
+        backgroundColor = UIColor.blue
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -78,10 +90,10 @@ class VideoCell: UICollectionViewCell {
 //instantiate thumbnailView
 //add thumbnailView as subview of cell
 //set thumbnail size
-//add constraints for thumbnailView padding (horizontal and veritcal)
+//add constraints for thumbnailView padding (vertical and horizontal)
 //remove thumnail size setting (no longer needed)
 
-//
+//add separator view
 
 
 
