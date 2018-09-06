@@ -17,10 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //1)Added here -- to make setting up layout from code easier.
+        //5)initialize (UICollectionView with non nil layout parameter)
+        
+        let layout = UICollectionViewFlowLayout()
         window = UIWindow(frame: UIScreen.main.bounds) //changed to new swift here
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
         
         
         return true
