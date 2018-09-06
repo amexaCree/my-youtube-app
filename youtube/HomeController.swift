@@ -50,7 +50,7 @@ class VideoCell: UICollectionViewCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blue
-        imageView.translatesAutoresizingMaskIntoConstraints = false // for setting constrains on a view in code this has to be set
+        imageView.translatesAutoresizingMaskIntoConstraints = false // for setting constraints on a view in code this has to be set
         return imageView
     }()
     
@@ -66,18 +66,19 @@ class VideoCell: UICollectionViewCell {
         addSubview(thumbnailImageView)
         addSubview(separatorView)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H: |-16-[V0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V: |-16-[V0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
         
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
         
-        //        thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
-        
-        backgroundColor = UIColor.blue
+        //  thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
+        //  backgroundColor = UIColor.blue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -95,7 +96,10 @@ class VideoCell: UICollectionViewCell {
 //remove thumnail size setting (no longer needed)
 
 //add separator view
-
+//correct the contraint notation (wrong notation causes crashes)
+//make separator 1 pixel vertically
+//remove blue background color for whole cell
+//the last commit had many mistakes...
 
 
 
