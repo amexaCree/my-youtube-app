@@ -99,23 +99,23 @@ class VideoCell: UICollectionViewCell {
         return label
     }()
     
-//    let subtitleTextView: UITextView = {
-//        let textView = UITextView()
-//        textView.backgroundColor = UIColor.red
-//        textView.translatesAutoresizingMaskIntoConstraints = false
+    let subtitleTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = UIColor.red
+        textView.translatesAutoresizingMaskIntoConstraints = false
     
-//        //textView.text = "TaylorSwiftVEVO - 1,604,684,607 views • 2 years"
-//        //textView.textContainerInset = UIEdgeInset(0,-4,0,0)
-//        //textView.textColor = UIColor.lightGray
-//        return textView
-//    }()
+        //textView.text = "TaylorSwiftVEVO - 1,604,684,607 views • 2 years"
+        //textView.textContainerInset = UIEdgeInset(0,-4,0,0)
+        //textView.textColor = UIColor.lightGray
+        return textView
+    }()
 
     func setupViews() {
         addSubview(thumbnailImageView)
         addSubview(separatorView)
         addSubview(userProfileImageView)
         addSubview(titleLabel)
-        //addSubview(subtitleTextView)
+        addSubview(subtitleTextView)
         
         //horizontal constraints
         addConstraintsWithFormat("H:|-16-[v0]-16-|", views: thumbnailImageView)
@@ -139,6 +139,7 @@ class VideoCell: UICollectionViewCell {
         //height constraint
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
+        //another way to add constraints for height and horizontal placement
         //addConstraintsWithFormat("V:[v0(20)]", views: titleLabel)
         //addConstraintsWithFormat("H:[v0]-16-|", views: titleLabel)
         
