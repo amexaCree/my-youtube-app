@@ -9,6 +9,13 @@
 import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var videos: [Video] = {
+        var blankSpaceVideo = Video()
+        blankSpaceVideo.title = "Taylor Swift - Blank Space"
+        blankSpaceVideo.thumbnailImageName = "taylor_swift_blank_space"
+        return [blankSpaceVideo]
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +29,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 5  //video.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -34,8 +41,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200) // changed for new swift
+        let height = (view.frame.width - 16 - 16) * 10 / 16 //old ratio => * 9 / 16
+        let heightForOthers = CGFloat(0) // 16 + 68 (for when adding other items (profileView and/or title and subtitle) to cell, calculated from constraints)
+        return CGSize(width: view.frame.width, height: height + heightForOthers) // changed for new swift
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 
 }
@@ -51,9 +64,9 @@ class VideoCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blue
         imageView.translatesAutoresizingMaskIntoConstraints = false // for setting constraints on a view in code this has to be set
-        //  imageView.image = UIImage(named: "taylor_swift_blank_space")
-        //  imageView.contentMode = .ScaleAspectFill //Fits width and height might be cut off (or fits height with width cut off - basically a part of the image may be cut off as oppose to aspectfit where it would be letter boxed)
-        //  imageView.clipToBounds = true // makes part of image that comes out of bounds to be cut off instead of extending out (i.e. does not resize container, just cuts off extra bits of image)
+        imageView.image = UIImage(named: "taylor_swift_blank_space")
+        imageView.contentMode = .scaleAspectFill //Fits width and height might be cut off (or fits height with width cut off - basically a part of the image may be cut off as oppose to aspectfit where it would be letter boxed)
+        imageView.clipsToBounds = true // makes part of image that comes out of bounds to be cut off instead of extending out (i.e. does not resize container, just cuts off extra bits of image)
         
         return imageView
     }()
@@ -72,6 +85,7 @@ class VideoCell: UICollectionViewCell {
     let separatorView: UIView =  {
         let view = UIView()
         view.backgroundColor = UIColor.black
+        //view.backgroundColor = UIColor(red: 230/2555, green: 230/255, blue: 230/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -112,9 +126,21 @@ class VideoCell: UICollectionViewCell {
 
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
 
+        
+        
         //  add visual constraints for profileImage, titleLabel and subtitleLabel here (Ep 1)
         
+        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Bottom, multiplier: 1, constant: 8))
+        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: userProfileImageView, attribute: .Right, multiplier: 1, constant: 8))
+        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Right, multiplier: 1, constant: 0))
+        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 20))
+        
+        //  .....more to add for subtitle and profile pic.......
+
+        
+        
         //  thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
+        
         //  backgroundColor = UIColor.blue
     }
     
@@ -139,7 +165,10 @@ class VideoCell: UICollectionViewCell {
 //the last commit had many mistakes...
 
 //14)add settings for thumbnailView and initialize profileImage, titleLabel and subtitleLabel
-
+//changed size returned in sizeforItemAtIndexpath func height, to give more space for thumbnailImage
+//15)remove extra space between cells (I jumped this step was supposed to be before adding separator) by adding minimumLineSpacingAtIndexpath func
+//16)add default thumbnail image (taylor swift blank space, HD image gotten from google search)
+//17)adjust height ratio for new youtube thumbnail dimensions.
 
 
 
