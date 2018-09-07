@@ -112,7 +112,7 @@ class VideoCell: UICollectionViewCell {
 
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
 
-        //  add visual constraints for profileImage, titleLabel and subtitle here (Ep 1)
+        //  add visual constraints for profileImage, titleLabel and subtitleLabel here (Ep 1)
         
         //  thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
         //  backgroundColor = UIColor.blue
@@ -138,7 +138,8 @@ class VideoCell: UICollectionViewCell {
 //remove blue background color for whole cell
 //the last commit had many mistakes...
 
-//14)
+//14)add settings for thumbnailView and initialize profileImage, titleLabel and subtitleLabel
+
 
 
 
