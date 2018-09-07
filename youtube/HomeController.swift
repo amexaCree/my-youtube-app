@@ -90,14 +90,14 @@ class VideoCell: UICollectionViewCell {
         return view
     }()
     
-//    let titleLabel: UILable = {
-//        let lable = UILabel()
-//        label.backgroundColor = UIColor.purple
-//        label.translatesAutoresizingMaskIntoConstraints = false
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.purple
+        label.translatesAutoresizingMaskIntoConstraints = false // uses normal function for setting constraints so this needs to be set here.
     
-//        //label.text = "Taylor Swift - Blank Space"
-//        return label
-//    }()
+        //label.text = "Taylor Swift - Blank Space"
+        return label
+    }()
     
 //    let subtitleTextView: UITextView = {
 //        let textView = UITextView()
@@ -114,7 +114,7 @@ class VideoCell: UICollectionViewCell {
         addSubview(thumbnailImageView)
         addSubview(separatorView)
         addSubview(userProfileImageView)
-        //addSubview(titleLabel)
+        addSubview(titleLabel)
         //addSubview(subtitleTextView)
         
         //horizontal constraints
@@ -122,12 +122,25 @@ class VideoCell: UICollectionViewCell {
         
         addConstraintsWithFormat("H:|-16-[v0(44)]", views: userProfileImageView)
         
-        addConstraintsWithFormat("H:|[v0]|", views: separatorView)
-        
         //vertical constraints
         addConstraintsWithFormat("V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
         
+        addConstraintsWithFormat("H:|[v0]|", views: separatorView)
+        
         //addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
+        
+        //top constraint
+        //had to be changed for new swift
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: 8))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        
+        //addConstraintsWithFormat("V:[v0(20)]", views: titleLabel)
+        //addConstraintsWithFormat("H:[v0]-16-|", views: titleLabel)
         
         
         
@@ -174,10 +187,19 @@ extension UIView {
 }
 
 
+
+
+//21)add profileImageView and constraints
+//22)add titleLabel and constraints
+
+
+
 //20)prior mistake - miscalcution
 //The 16:9 ratio for thumbnail image was always correct.
 //I was supposed to add to height of cell the padding above and below thumbnail (32px)
 //It works properly with 16:9 ratio now after adding this.
+
+
 
 
 
