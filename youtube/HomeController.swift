@@ -124,7 +124,7 @@ class VideoCell: UICollectionViewCell {
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
 
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
 
         
         
@@ -169,6 +169,7 @@ class VideoCell: UICollectionViewCell {
 //15)remove extra space between cells (I jumped this step was supposed to be before adding separator) by adding minimumLineSpacingAtIndexpath func (need to commit this note!)
 //16)add default thumbnail image (taylor swift blank space, HD image gotten from google search)
 //17)adjust height ratio for new youtube thumbnail dimensions.
+//18)make separator not touch top edge by removing first pipe in visual format constraints (I missed this aswell)
 
 
 
