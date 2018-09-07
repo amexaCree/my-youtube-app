@@ -166,7 +166,7 @@ class VideoCell: UICollectionViewCell {
 
 //14)add settings for thumbnailView and initialize profileImage, titleLabel and subtitleLabel
 //changed size returned in sizeforItemAtIndexpath func height, to give more space for thumbnailImage
-//15)remove extra space between cells (I jumped this step was supposed to be before adding separator) by adding minimumLineSpacingAtIndexpath func
+//15)remove extra space between cells (I jumped this step was supposed to be before adding separator) by adding minimumLineSpacingAtIndexpath func (need to commit this note!)
 //16)add default thumbnail image (taylor swift blank space, HD image gotten from google search)
 //17)adjust height ratio for new youtube thumbnail dimensions.
 
