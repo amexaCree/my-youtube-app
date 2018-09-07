@@ -28,7 +28,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-//        cell.backgroundColor = UIColor.red
+        // cell.backgroundColor = UIColor.red
         
         return cell
     }
@@ -51,8 +51,22 @@ class VideoCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blue
         imageView.translatesAutoresizingMaskIntoConstraints = false // for setting constraints on a view in code this has to be set
+        //  imageView.image = UIImage(named: "taylor_swift_blank_space")
+        //  imageView.contentMode = .ScaleAspectFill //Fits width and height might be cut off (or fits height with width cut off - basically a part of the image may be cut off as oppose to aspectfit where it would be letter boxed)
+        //  imageView.clipToBounds = true // makes part of image that comes out of bounds to be cut off instead of extending out (i.e. does not resize container, just cuts off extra bits of image)
+        
         return imageView
     }()
+    
+//    let userProfileImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.backgroundColor = UIColor.green
+//        imageView.image = UIImage(named:"taylor_swift_profile")
+    
+//        //imageView.layer.cornerRadius = 22
+//        //imageView.layer.masksToBounds = true
+//        return imageView
+//    }()
     
 
     let separatorView: UIView =  {
@@ -62,9 +76,32 @@ class VideoCell: UICollectionViewCell {
         return view
     }()
     
+//    let titleLabel: UILable = {
+//        let lable = UILabel()
+//        label.backgroundColor = UIColor.purple
+//        label.translatesAutoresizingMaskIntoConstraints = false
+    
+//        //label.text = "Taylor Swift - Blank Space"
+//        return label
+//    }()
+    
+//    let subtitleTextView: UITextView = {
+//        let textView = UITextView()
+//        textView.backgroundColor = UIColor.red
+//        textView.translatesAutoresizingMaskIntoConstraints = false
+    
+//        //textView.text = "TaylorSwiftVEVO - 1,604,684,607 views • 2 years"
+//        //textView.textContainerInset = UIEdgeInset(0,-4,0,0)
+//        //textView.textColor = UIColor.lightGray
+//        return textView
+//    }()
+
     func setupViews() {
         addSubview(thumbnailImageView)
         addSubview(separatorView)
+        //addSubview(userProfileImageView)
+        //addSubview(titleLabel)
+        //addSubview(subtitleTextView)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
         
@@ -75,7 +112,7 @@ class VideoCell: UICollectionViewCell {
 
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
 
-        
+        //  add visual constraints for profileImage, titleLabel and subtitle here (Ep 1)
         
         //  thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
         //  backgroundColor = UIColor.blue
@@ -101,6 +138,7 @@ class VideoCell: UICollectionViewCell {
 //remove blue background color for whole cell
 //the last commit had many mistakes...
 
+//14)
 
 
 

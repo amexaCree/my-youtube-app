@@ -55,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				4F87CA3F2140EC2B003C4E78 /* supporting files */,
+				4F87CA402140F45E003C4E78 /* HomeController.swift */,
 				4F87CA312140EBD0003C4E78 /* Main.storyboard */,
 				4F87CA392140EBD1003C4E78 /* Info.plist */,
 			);
@@ -66,7 +67,6 @@
 			children = (
 				4F87CA2D2140EBD0003C4E78 /* AppDelegate.swift */,
 				4F87CA342140EBD1003C4E78 /* Assets.xcassets */,
-				4F87CA402140F45E003C4E78 /* HomeController.swift */,
 				4F87CA362140EBD1003C4E78 /* LaunchScreen.storyboard */,
 			);
 			path = "supporting files";
