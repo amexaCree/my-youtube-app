@@ -41,8 +41,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = (view.frame.width - 16 - 16) * 10 / 16 //old ratio => * 9 / 16
-        let heightForOthers = CGFloat(0) // 16 + 68 (for when adding other items (profileView and/or title and subtitle) to cell, calculated from constraints)
+        let height = (view.frame.width - 16 - 16) * 9 / 16
+        let heightForOthers = CGFloat(32) // 32 for 16px padding above and below // 16 + 68 (when adding other items (profileView and/or title and subtitle) to cell, calculated from constraints)
         return CGSize(width: view.frame.width, height: height + heightForOthers) // changed for new swift
         
     }
@@ -117,12 +117,13 @@ class VideoCell: UICollectionViewCell {
         //addSubview(titleLabel)
         //addSubview(subtitleTextView)
         
-        
+        //horizontal constraints
         addConstraintsWithFormat("H:|-16-[v0]-16-|", views: thumbnailImageView)
+        addConstraintsWithFormat("H:|[v0]|", views: separatorView)
         
+        //vertical constraints
         addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
         
-        addConstraintsWithFormat("H:|[v0]|", views: separatorView)
         
         
         
@@ -166,6 +167,14 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
+
+
+//20)prior mistake - miscalcution
+//The 16:9 ratio for thumbnail image was always correct.
+//I was supposed to add to height of cell the padding above and below thumbnail (32px)
+//It works properly with 16:9 ratio now after adding this.
+
+
 
 //19)refactor/cleanup/simplify code by putting separator and thumbnail vertical constraints in one visual format discription
 //18)more refactoring:
