@@ -181,7 +181,7 @@ extension UIView {
 
 //24)cleanup:
 //get rid of no longer needed comments
-
+//image asset was added sometime within the last steps...
 
 //21)add profileImageView and constraints
 //22)add titleLabel and constraints
