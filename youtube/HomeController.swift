@@ -126,8 +126,7 @@ class VideoCell: UICollectionViewCell {
         addConstraintsWithFormat("V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
         
         addConstraintsWithFormat("H:|[v0]|", views: separatorView)
-        
-        //addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
+
         
         //top constraint
         //had to be changed for new swift
@@ -149,27 +148,12 @@ class VideoCell: UICollectionViewCell {
         addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
         
-        
-        
-        //--- saving for later ---//
+        //--- save for notes ---//
         //addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
+        
+        //addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
+        
 
-        
-        
-        //  add visual constraints for profileImage, titleLabel and subtitleLabel here (Ep 1)
-        
-        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Bottom, multiplier: 1, constant: 8))
-        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: userProfileImageView, attribute: .Right, multiplier: 1, constant: 8))
-        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Right, multiplier: 1, constant: 0))
-        //       addConstraints(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 20))
-        
-        //  .....more to add for subtitle and profile pic.......
-
-        
-        
-        //  thumbnailImageView.frame = CGRect(x: 0, y:0, width: 100, height: 100)
-        
-        //  backgroundColor = UIColor.blue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -195,8 +179,13 @@ extension UIView {
 
 
 
+//24)cleanup:
+//get rid of no longer needed comments
+
+
 //21)add profileImageView and constraints
 //22)add titleLabel and constraints
+//23)add subtitleLabel adn constraints
 
 
 
