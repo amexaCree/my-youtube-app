@@ -63,7 +63,7 @@ class VideoCell: UICollectionViewCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blue
-        imageView.translatesAutoresizingMaskIntoConstraints = false // for setting constraints on a view in code this has to be set
+        // imageView.translatesAutoresizingMaskIntoConstraints = false //has been moved to addConstraintsWithFormat func in UIView extension
         imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill //Fits width and height might be cut off (or fits height with width cut off - basically a part of the image may be cut off as oppose to aspectfit where it would be letter boxed)
         imageView.clipsToBounds = true // makes part of image that comes out of bounds to be cut off instead of extending out (i.e. does not resize container, just cuts off extra bits of image)
@@ -86,7 +86,7 @@ class VideoCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = UIColor.black
         //view.backgroundColor = UIColor(red: 230/2555, green: 230/255, blue: 230/255, alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        //view.translatesAutoresizingMaskIntoConstraints = false //has been moved to addConstraintsWithFormat func in UIView extension
         return view
     }()
     
@@ -117,17 +117,12 @@ class VideoCell: UICollectionViewCell {
         //addSubview(titleLabel)
         //addSubview(subtitleTextView)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView]))
+        
+        addConstraintsWithFormat("V:|-16-[v0]-16-|", views: thumbnailImageView)
         
         addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
         
-        //this has been replaced by above
-        //addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-[v1(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":thumbnailImageView, "v1":separatorView]))
-        
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":separatorView]))
-
-        
+        addConstraintsWithFormat("H:|[v0]|", views: separatorView)
         
         
         
@@ -163,7 +158,9 @@ extension UIView {
         var viewsDictionary = [String: UIView]()
         for index in views.indices {  // had to be changed for new swift
             let key = "v\(index)"
-            viewsDictionary[key] = views[index]
+            let view = views[index]
+            view.translatesAutoresizingMaskIntoConstraints = false // this has to be set to false is constraints on a view is set in code
+            viewsDictionary[key] = view
         }
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
