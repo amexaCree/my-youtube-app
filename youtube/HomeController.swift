@@ -42,7 +42,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = (view.frame.width - 16 - 16) * 9 / 16
-        let heightForOthers = CGFloat(32) // 32 for 16px padding above and below // 16 + 68 (when adding other items (profileView and/or title and subtitle) to cell, calculated from constraints)
+        let heightForOthers = CGFloat(16 + 68) // for extra height from profile, title and subtitle views, calculated from constraints) // 32 for 16px padding above and below (without profileView, titleView and subtitleView)
         return CGSize(width: view.frame.width, height: height + heightForOthers) // changed for new swift
         
     }
@@ -71,15 +71,15 @@ class VideoCell: UICollectionViewCell {
         return imageView
     }()
     
-//    let userProfileImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.backgroundColor = UIColor.green
-//        imageView.image = UIImage(named:"taylor_swift_profile")
-//
-//        //imageView.layer.cornerRadius = 22
-//        //imageView.layer.masksToBounds = true
-//        return imageView
-//    }()
+    let userProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.green
+        //imageView.image = UIImage(named:"taylor_swift_profile")
+
+        //imageView.layer.cornerRadius = 22
+        //imageView.layer.masksToBounds = true
+        return imageView
+    }()
     
 
     let separatorView: UIView =  {
@@ -113,16 +113,21 @@ class VideoCell: UICollectionViewCell {
     func setupViews() {
         addSubview(thumbnailImageView)
         addSubview(separatorView)
-        //addSubview(userProfileImageView)
+        addSubview(userProfileImageView)
         //addSubview(titleLabel)
         //addSubview(subtitleTextView)
         
         //horizontal constraints
         addConstraintsWithFormat("H:|-16-[v0]-16-|", views: thumbnailImageView)
+        
+        addConstraintsWithFormat("H:|-16-[v0(44)]", views: userProfileImageView)
+        
         addConstraintsWithFormat("H:|[v0]|", views: separatorView)
         
         //vertical constraints
-        addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
+        addConstraintsWithFormat("V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
+        
+        //addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
         
         
         
