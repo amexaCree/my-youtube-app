@@ -75,7 +75,7 @@ class VideoCell: UICollectionViewCell {
 //        let imageView = UIImageView()
 //        imageView.backgroundColor = UIColor.green
 //        imageView.image = UIImage(named:"taylor_swift_profile")
-//    
+//
 //        //imageView.layer.cornerRadius = 22
 //        //imageView.layer.masksToBounds = true
 //        return imageView
@@ -118,7 +118,7 @@ class VideoCell: UICollectionViewCell {
         //addSubview(subtitleTextView)
         
         
-        addConstraintsWithFormat("V:|-16-[v0]-16-|", views: thumbnailImageView)
+        addConstraintsWithFormat("H:|-16-[v0]-16-|", views: thumbnailImageView)
         
         addConstraintsWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
         
