@@ -75,7 +75,7 @@ class VideoCell: UICollectionViewCell {
 //        let imageView = UIImageView()
 //        imageView.backgroundColor = UIColor.green
 //        imageView.image = UIImage(named:"taylor_swift_profile")
-    
+//    
 //        //imageView.layer.cornerRadius = 22
 //        //imageView.layer.masksToBounds = true
 //        return imageView
@@ -168,6 +168,12 @@ extension UIView {
 }
 
 //19)refactor/cleanup/simplify code by putting separator and thumbnail vertical constraints in one visual format discription
+//18)more refactoring:
+//add new extension to UIView with addConstraintsWithFormat func
+//replace addConstraints with visual format implementations with new func (addConstraintsWithFormat)
+//move translatesAutoresizingMaskIntoConstraints into addConstraintsWithFormat func
+
+
 
 
 
