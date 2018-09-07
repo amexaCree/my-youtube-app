@@ -74,10 +74,9 @@ class VideoCell: UICollectionViewCell {
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.green
-        //imageView.image = UIImage(named:"taylor_swift_profile")
-
-        //imageView.layer.cornerRadius = 22
-        //imageView.layer.masksToBounds = true
+        imageView.image = UIImage(named:"taylor_swift_profile")
+        imageView.layer.cornerRadius = 22  // half of view height
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -178,6 +177,15 @@ extension UIView {
 
 
 
+//27)add profile image asset
+//28)add circular mask to profileImageView
+
+
+
+
+
+
+//------------------------
 
 //24)cleanup:
 //get rid of no longer needed comments
