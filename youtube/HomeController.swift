@@ -62,7 +62,7 @@ class VideoCell: UICollectionViewCell {
     
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blue
+        //imageView.backgroundColor = UIColor.blue
         // imageView.translatesAutoresizingMaskIntoConstraints = false //has been moved to addConstraintsWithFormat func in UIView extension
         imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill //Fits width and height might be cut off (or fits height with width cut off - basically a part of the image may be cut off as oppose to aspectfit where it would be letter boxed)
@@ -73,9 +73,9 @@ class VideoCell: UICollectionViewCell {
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.green
+        //imageView.backgroundColor = UIColor.green
         imageView.image = UIImage(named:"taylor_swift_profile")
-        imageView.layer.cornerRadius = 22  // half of view height
+        imageView.layer.cornerRadius = 22  // half of profileImageView height
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -83,29 +83,27 @@ class VideoCell: UICollectionViewCell {
 
     let separatorView: UIView =  {
         let view = UIView()
-        view.backgroundColor = UIColor.black
-        //view.backgroundColor = UIColor(red: 230/2555, green: 230/255, blue: 230/255, alpha: 1)
+        //view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         //view.translatesAutoresizingMaskIntoConstraints = false //has been moved to addConstraintsWithFormat func in UIView extension
         return view
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.purple
+        //label.backgroundColor = UIColor.purple
         label.translatesAutoresizingMaskIntoConstraints = false // uses normal function for setting constraints so this needs to be set here.
-    
-        //label.text = "Taylor Swift - Blank Space"
+        label.text = "Taylor Swift - Blank Space"
         return label
     }()
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = UIColor.red
+        //textView.backgroundColor = UIColor.red
         textView.translatesAutoresizingMaskIntoConstraints = false
-    
-        //textView.text = "TaylorSwiftVEVO - 1,604,684,607 views • 2 years"
-        //textView.textContainerInset = UIEdgeInset(0,-4,0,0)
-        //textView.textColor = UIColor.lightGray
+        textView.text = "TaylorSwiftVEVO - 1,604,684,607 views • 2 years ago"
+        textView.textContainerInset = UIEdgeInsetsMake(0,-4,0,0)
+        textView.textColor = UIColor.lightGray
         return textView
     }()
 
@@ -138,13 +136,13 @@ class VideoCell: UICollectionViewCell {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 8))
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
         //left constraint
         addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
         //right constraint
         addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: 0))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30))
         
         
         //--- save for notes ---//
