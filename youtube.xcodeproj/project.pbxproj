@@ -44,17 +44,10 @@
 		4F1FF3102144960B001E778A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4F1FF31421449674001E778A /* Comments.swift */,
 				4F1FF31121449628001E778A /* Extensions.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		4F1FF31321449653001E778A /* Doc */ = {
-			isa = PBXGroup;
-			children = (
-				4F1FF31421449674001E778A /* Comments.swift */,
-			);
-			path = Doc;
 			sourceTree = "<group>";
 		};
 		4F87CA212140EBD0003C4E78 = {
@@ -76,7 +69,6 @@
 		4F87CA2C2140EBD0003C4E78 /* youtube */ = {
 			isa = PBXGroup;
 			children = (
-				4F1FF31321449653001E778A /* Doc */,
 				4F1FF3102144960B001E778A /* Helpers */,
 				4F87CA46214227CC003C4E78 /* Model */,
 				4F87CA3F2140EC2B003C4E78 /* supporting files */,
