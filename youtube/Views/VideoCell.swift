@@ -10,6 +10,8 @@ import UIKit
 
 class VideoCell: UICollectionViewCell {
     
+    var video: Video?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()

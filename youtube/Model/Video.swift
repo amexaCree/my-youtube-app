@@ -9,7 +9,7 @@
 import UIKit
 
 class Video: NSObject {
-    
+    //video model added now...
     var thumbnailImageName: String?
     var title: String?
     
