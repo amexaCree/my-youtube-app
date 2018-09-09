@@ -37,6 +37,15 @@ class VideoCell: BaseCell {
                 userProfileImageView.image = UIImage(named: profileImageName)
             }
             
+            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
+                
+                let numberFormatter = NumberFormatter() //changed for new swift
+                numberFormatter.numberStyle = .decimal
+                
+                let subtitleText = "\(channelName) • \(numberFormatter.string(from: numberOfViews)!) • 2 years ago "
+                subtitleTextView.text = subtitleText
+            }
+            
         }
     }
     
