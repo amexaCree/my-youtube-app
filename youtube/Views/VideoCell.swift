@@ -8,22 +8,35 @@
 
 import UIKit
 
-class VideoCell: UICollectionViewCell {
-    
-    var video: Video?
-    
+class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
+    func setupViews(){
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class VideoCell: BaseCell {
+    
+    var video: Video?
+    
+    
+
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        //imageView.backgroundColor = UIColor.blue
-        // imageView.translatesAutoresizingMaskIntoConstraints = false //has been moved to addConstraintsWithFormat func in UIView extension
         imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill //Fits width and height might be cut off (or fits height with width cut off - basically a part of the image may be cut off as oppose to aspectfit where it would be letter boxed)
         imageView.clipsToBounds = true // makes part of image that comes out of bounds to be cut off instead of extending out (i.e. does not resize container, just cuts off extra bits of image)
+        //--- save for now ----
+        //imageView.backgroundColor = UIColor.blue
+        // imageView.translatesAutoresizingMaskIntoConstraints = false //has been moved to addConstraintsWithFormat func in UIView extension
         
         return imageView
     }()
@@ -64,7 +77,9 @@ class VideoCell: UICollectionViewCell {
         return textView
     }()
     
-    func setupViews() {
+    override func setupViews() {
+        super.setupViews()
+        
         addSubview(thumbnailImageView)
         addSubview(separatorView)
         addSubview(userProfileImageView)
@@ -110,9 +125,7 @@ class VideoCell: UICollectionViewCell {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
 }
 
