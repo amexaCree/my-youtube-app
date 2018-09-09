@@ -12,13 +12,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     //videos for model added now...
     var videos: [Video] = {
+        var kanyeChannel = Channel()
+        kanyeChannel.name = "KanyeIsTheBestChannel"
+        kanyeChannel.profileImageName = "kanye_profile"
+        
         var blankSpaceVideo = Video()
         blankSpaceVideo.title = "Taylor Swift - Blank Space"
         blankSpaceVideo.thumbnailImageName = "taylor_swift_blank_space"
+        blankSpaceVideo.channel = kanyeChannel
         
         var badBloodVideo = Video()
         badBloodVideo.title = "Taylor Swift - Bad Blood featuring Kendrik Lamar"
         badBloodVideo.thumbnailImageName = "taylor_swift_bad_blood"
+        blankSpaceVideo.channel = kanyeChannel
         
         return [blankSpaceVideo, badBloodVideo]
     }()
