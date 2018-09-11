@@ -58,7 +58,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = (view.frame.width - 16 - 16) * 9 / 16
-        let heightForOthers = CGFloat(16 + 68) // for extra height from profile, title and subtitle views, calculated from constraints) // 32 for 16px padding above and below (without profileView, titleView and subtitleView)
+        let heightForOthers = CGFloat(16 + 88) // for extra height from profile, title and subtitle views, calculated from constraints) // 32 for 16px padding above and below (without profileView, titleView and subtitleView)
         return CGSize(width: view.frame.width, height: height + heightForOthers) // changed for new swift
         
     }
